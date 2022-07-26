@@ -1,6 +1,7 @@
 ## REQUIRED INSTALLATION
 
 Flask
+
 	pip install flask
 
 ## SETUP
