@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+{% for field, errors in form.errors.items() %}
+    <div class="alert error">
+        {{ ', '.join(errors) }}
+    </div>
+{% endfor %}
+<h1>{% block title %} Register {% endblock %}</h1>
+<form method="POST" action="/register">
+    {{ form.csrf_token }}
+    <p>{{ form.username.label }}</p>
+        <p>{{ form.username }}</p>
+    <p>{{ form.email.label }}</p>
+        <p>{{ form.email }}</p>
+    <p>{{ form.password.label }}</p>
+        <p>{{ form.password }}</p>
+    <p>{{ form.confirm.label }}</p>
+        <p>{{ form.confirm }}</p>
+
+    <p><input type="submit" value="Register"></p>
+</form>
+{% endblock %}
