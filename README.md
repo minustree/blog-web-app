@@ -18,4 +18,4 @@ While in directory with `app.py`
 
 	flask run
 
-
+Access the site on your machine's local host at `localhost:5000`
