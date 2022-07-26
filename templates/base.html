@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %} {% endblock %} - Bug Blog</title>
+    <style>
+        .post {
+            padding: 10px;
+            margin: 5px;
+            background-color: #f3f3f3;
+        }
+        nav a {
+            color: #8bc637;
+            font-size: 2em;
+            margin-left: 50px;
+            text-decoration: none;
+        }
+        nav li {
+            float: right;
+            list-style-type: none;
+        }
+        .alert {
+            padding: 20px;
+            margin: 5px;
+        }
+        .alert.success {
+            color: #00971f;
+            background-color: #d5ffde;
+        }
+        .alert.error {
+            color: #970020;
+            background-color: #ffd5de;
+        }
+        table, th, td {
+          border:1px solid black;
+          padding:5px;
+        }
+        .sidebar {
+            padding: 20px;
+            margin: 5px;
+            border:1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <d style="color: #1aa06a; font-size: 2em;">Bug Blog</d>
+        <a href="{{ url_for('home') }}">Home</a>
+        <a href="{{ url_for('about') }}">About</a>
+        {% if session.get('username') is none %}
+            <li><a href="{{ url_for('register') }}">Register</a></li>
+            <li><a href="{{ url_for('login') }}">Login</a></li>
+        {% else %}
+            <a href="{{ url_for('new') }}">✎</a>
+            <li><a href="{{ url_for('logout') }}">Logout</a></li>
+            <li style="margin-top: 10px; font-size: 20px">{{ session.get('username') }}</li>
+        {% endif %}
+
+    </nav>
+    <hr>
+    <div style="width:auto;">
+      <div style="width:80%; float:left;">
+          <ul>
+              {% for message in get_flashed_messages() %}
+                <div class="alert error">{{ message }}</div>
+              {% endfor %}
+              {% block content %} {% endblock %}
+          </ul>
+      </div>
+      <div style="width:20%; float:right;">
+          <ul>
+              <div class="sidebar">
+                  <h1>Links</h1>
+                  <p><a href="#">Announcements</a></p>
+                  <p><a href="#">Upcoming Events</a></p>
+                  <p><a href="#">Bug of the Day</a></p>
+                  <p><a href="#">Archive</a></p>
+
+              </div>
+          </ul>
+      </div>
+    </div>
+    <div style="clear: both;"></div>
+</body>
+</html>
