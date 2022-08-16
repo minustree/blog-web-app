@@ -1,4 +1,4 @@
-## EXAMPLE
+## EXAMPLE BLOG
 ![example](https://github.com/minustree/blog-web-app/blob/main/screenshot.png)
 
 ## REQUIRED INSTALLATION
